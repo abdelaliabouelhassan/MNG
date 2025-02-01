@@ -12,21 +12,16 @@ use RoachPHP\Spider\ParseResult;
 
 class MNGSpider extends BasicSpider
 {
-    public array $startUrls = [
-        'https://lims.tagleaf.com/coas/5nAkrgJ7iQh1ef77y4dBMBOx5rUGFiHemNmWC8yeFOXtvQGnQ9'
-    ];
+    public array $startUrls = [];
+
 
     public array $downloaderMiddleware = [
         RequestDeduplicationMiddleware::class,
     ];
 
-    public array $spiderMiddleware = [
-        //
-    ];
+    public array $spiderMiddleware = [];
 
-    public array $itemProcessors = [
-        //
-    ];
+    public array $itemProcessors = [];
 
     public array $extensions = [
         LoggerExtension::class,
@@ -34,7 +29,6 @@ class MNGSpider extends BasicSpider
     ];
 
     public int $concurrency = 2;
-
     public int $requestDelay = 1;
 
     /**
@@ -42,35 +36,24 @@ class MNGSpider extends BasicSpider
      */
     public function parse(Response $response): Generator
     {
-        $batchNo = $response
-            ->filter('p:contains("Batch No.")')
-            ->first();
+        $batchNo = $response->filter('p:contains("Batch No.")')->first();
         $batchNo = $batchNo->count() ? trim(preg_replace('/Batch No\.?\s*:/', '', $batchNo->text())) : null;
 
-        $UID = $response
-            ->filter('p:contains("Metrc UID")')
-            ->first();
+        $UID = $response->filter('p:contains("Metrc UID")')->first();
         $UID = $UID->count() ? trim(preg_replace('/Metrc UID\.?\s*:/', '', $UID->text())) : null;
 
-        $name = $response
-            ->filter('p.h5 span.text-semibold')
-            ->first();
+        $name = $response->filter('p.h5 span.text-semibold')->first();
         $name = $name->count() ? $name->text() : null;
 
-        $distro = $response
-            ->filter('p.h5:contains("Client")')
-            ->first();
+        $distro = $response->filter('p.h5:contains("Client")')->first();
         $distro = $distro->count() ? $distro->text() : null;
 
-        // Extract client name safely
         if ($distro) {
             preg_match('/Client:\s*(.+)/i', $distro, $matches);
             $distro = $matches[1] ?? null;
         }
 
-        $licenseText = $response
-            ->filter('p.h6:contains("License")')
-            ->first();
+        $licenseText = $response->filter('p.h6:contains("License")')->first();
         $license = null;
         if ($licenseText->count()) {
             preg_match('/License\s*#:\s*([\w-]+)/i', $licenseText->text(), $matches);

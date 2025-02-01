@@ -35,6 +35,8 @@ const data = ref({
   title_font_size: "18",
 });
 
+const url = ref(null);
+
 const generateHorizontalPdf = async () => {
   if (loading.value) return;
   loading.value = true;
@@ -77,6 +79,23 @@ const generateVerticalPdf = async () => {
     })
     .catch((err) => {
       console.error("Error downloading the PDF", err);
+    })
+    .finally(() => {
+      loading.value = false;
+    });
+};
+
+const getData = async () => {
+  if (loading.value) return;
+  if (!url.value) return;
+  loading.value = true;
+  axios
+    .post("/getData", { url: url.value })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.error("Error Scraping Data", err);
     })
     .finally(() => {
       loading.value = false;
@@ -298,11 +317,13 @@ const generateVerticalPdf = async () => {
             <p class="mb-2">From Link we found the below info:</p>
             <input
               type="url"
+              v-model="url"
               class="bg-gray-800 border-gray-600 text-white px-4 py-2 rounded w-full mb-4"
               placeholder="enter link to COA if available"
             />
             <div class="grid md:grid-cols-2 gap-2">
               <button
+                @click="getData"
                 class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
               >
                 GET COA INFO (1 MIN)
