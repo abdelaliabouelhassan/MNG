@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    <div class="flex justify-between gap-4 w-full items-center pt-[20px] pr-10">
+    <div class="flex justify-between gap-4 w-full items-center pt-[20px] pr-10 pb-4">
       <div>
         <p class="text-black font-bold text-lg whitespace-nowrap">
            {{ $request['distro_name'] }}
@@ -85,8 +85,8 @@
         <p class="text-black font-bold text-lg">{{$request['license']}}</p>
       </div>
 
-      <div class=" ">
-        <img class=" w-full h-[59px] min-w-[400px]" src="data:image/jpeg;base64,{{DNS1D::getBarcodeJPG($request['barcode_data'], 'C128')}}" alt="barcode"   />
+      <div class=" h-[59px] max-w-[400px] w-full ">
+        <img class=" w-full h-full object-fill" src="data:image/jpeg;base64,{{DNS1D::getBarcodeJPG($request['barcode_data'], 'C128')}}" alt="barcode"   />
       </div>
     </div>
   </div>

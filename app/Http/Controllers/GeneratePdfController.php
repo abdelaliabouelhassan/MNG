@@ -19,7 +19,7 @@ class GeneratePdfController extends Controller
     {
         $logos = Logo::all();
         return Inertia::render('Welcome', [
-            'title' => 'title',
+            'title' => 'MNG LABEL MAKER v3',
             'logos' => $logos
         ]);
     }
@@ -34,7 +34,7 @@ class GeneratePdfController extends Controller
         return Pdf::view('horizontalPdf', compact('request', 'logo'))
             ->landscape()
             ->margins(0, 0, 0, 0)
-            ->paperSize(80.4, 200, 'mm')
+            ->paperSize(84.3, 200, 'mm')
             ->name('invoice-2023-04-10.pdf')
             ->download();
     }
