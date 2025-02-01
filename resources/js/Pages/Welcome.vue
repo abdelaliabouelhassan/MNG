@@ -8,6 +8,10 @@ defineProps({
     type: String,
     required: true,
   },
+  logos: {
+    type: Array,
+    required: true,
+  },
 });
 
 const loading = ref(false);
@@ -92,9 +96,15 @@ const generateVerticalPdf = async () => {
             <select
               id="image-icon"
               class="bg-gray-700 border-gray-600 text-white px-4 py-2 rounded w-full"
-              v-model="data.icon"
+              v-model="data.logo"
             >
-              <option value="HOUSE PARTY">HOUSE PARTY</option>
+              <option
+                :value="logo.id"
+                v-for="(logo, index, key) in logos"
+                :key="key"
+              >
+                {{ logo.name }}
+              </option>
             </select>
           </div>
           <div class="mb-4">
@@ -244,7 +254,7 @@ const generateVerticalPdf = async () => {
               </select>
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 gap-4">
             <div class="mb-4">
               <label for="barcode-data" class="block mb-1">Barcode Data</label>
               <input
@@ -255,7 +265,7 @@ const generateVerticalPdf = async () => {
                 value="0000000000"
               />
             </div>
-            <div class="mb-4">
+            <div class="mb-4 hidden">
               <label for="title-font-size" class="block mb-1"
                 >Title Font Size</label
               >

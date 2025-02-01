@@ -38,8 +38,8 @@
     <div class="flex w-full items-start gap-4">
       <div class="w-[200px] h-[200px] overflow-hidden">
         <img
-          src="{{asset('Screenshot 2025-01-31 at 4.05.46 PM.png')}}"
-          class="w-full h-full object-cover"
+          src="{{ asset('storage/' . $logo->logo) }}"
+          class="w-full h-full object-fill"
           alt=""
         />
       </div>

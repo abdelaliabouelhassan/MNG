@@ -12,8 +12,8 @@
         <div class="flex flex-col items-start gap-2">
                 <div class="w-40 h-40 bg-gray-500 -rotate-90">
                     <img
-                    src="{{asset('Screenshot 2025-01-31 at 4.05.46 PM.png')}}"
-                    class="w-full h-full object-cover"
+                    src="{{ asset('storage/' . $logo->logo) }}"
+                    class="w-full h-full object-fill"
                     alt=""
                     />
                 </div>
