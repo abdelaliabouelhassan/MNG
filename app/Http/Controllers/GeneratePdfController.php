@@ -34,9 +34,11 @@ class GeneratePdfController extends Controller
         }
         return Pdf::view('horizontalPdf', compact('request', 'logo'))
             ->withBrowsershot(function ($browsershot) {
-                $browsershot->setNodeBinary('/usr/bin/node')
-                    ->setNpmBinary('/usr/bin/npm')
-                    ->setChromePath('/usr/bin/google-chrome');
+                if (!app()->environment('local')) {
+                    $browsershot->setNodeBinary('/usr/bin/node')
+                        ->setNpmBinary('/usr/bin/npm')
+                        ->setChromePath('/usr/bin/google-chrome');
+                }
             })
             ->landscape()
             ->margins(0, 0, 0, 0)
@@ -52,6 +54,13 @@ class GeneratePdfController extends Controller
             $logo = Logo::first();
         }
         return Pdf::view('verticalPdf', compact('request', 'logo'))
+            ->withBrowsershot(function ($browsershot) {
+                if (!app()->environment('local')) {
+                    $browsershot->setNodeBinary('/usr/bin/node')
+                        ->setNpmBinary('/usr/bin/npm')
+                        ->setChromePath('/usr/bin/google-chrome');
+                }
+            })
             ->landscape()
             ->margins(0, 0, 0, 0)
             ->paperSize(76.9, 200, 'mm')
