@@ -35,7 +35,8 @@ class GeneratePdfController extends Controller
         return Pdf::view('horizontalPdf', compact('request', 'logo'))
             ->withBrowsershot(function ($browsershot) {
                 $browsershot->setNodeBinary('/usr/bin/node')
-                    ->setNpmBinary('/usr/bin/npm');
+                    ->setNpmBinary('/usr/bin/npm')
+                    ->setChromePath("/root/.cache/puppeteer/chrome/linux-132.0.6834.110/chrome-linux64/chrome");
             })
             ->landscape()
             ->margins(0, 0, 0, 0)
