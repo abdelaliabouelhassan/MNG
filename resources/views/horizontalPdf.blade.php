@@ -86,7 +86,8 @@
       </div>
 
       <div class=" h-[59px] max-w-[400px] w-full ">
-        <img class=" w-full h-full object-fill" src="data:image/jpeg;base64,{{DNS1D::getBarcodeJPG($request['barcode_data'], 'C128')}}" alt="barcode"   />
+        {{-- <img class=" w-full h-full object-fill" src="data:image/jpeg;base64,{{DNS1D::getBarcodeJPG($request['barcode_data'], 'C128')}}" alt="barcode"   /> --}}
+        {!! DNS1D::getBarcodeHTML($request['barcode_data'], 'C128') !!}
       </div>
     </div>
   </div>
