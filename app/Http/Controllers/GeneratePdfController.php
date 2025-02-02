@@ -26,12 +26,17 @@ class GeneratePdfController extends Controller
 
     public function generateHorizontalPdf(Request $request)
     {
+
         if ($request->logo) {
             $logo = Logo::findOrFail($request->logo);
         } else {
             $logo = Logo::first();
         }
         return Pdf::view('horizontalPdf', compact('request', 'logo'))
+            ->withBrowsershot(function ($browsershot) {
+                $browsershot->setNodeBinary('/usr/bin/node')
+                    ->setNpmBinary('/usr/bin/npm');
+            })
             ->landscape()
             ->margins(0, 0, 0, 0)
             ->paperSize(84.3, 200, 'mm')
