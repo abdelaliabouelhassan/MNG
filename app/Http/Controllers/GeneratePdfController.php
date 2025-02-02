@@ -36,7 +36,7 @@ class GeneratePdfController extends Controller
             ->withBrowsershot(function ($browsershot) {
                 $browsershot->setNodeBinary('/usr/bin/node')
                     ->setNpmBinary('/usr/bin/npm')
-                    ->setChromePath("/root/.cache/puppeteer/chrome/linux-132.0.6834.110/chrome-linux64/chrome");
+                    ->setChromePath('/usr/bin/google-chrome');
             })
             ->landscape()
             ->margins(0, 0, 0, 0)
