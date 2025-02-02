@@ -54,7 +54,8 @@
   
           <div class="flex flex-col items-start">
             <div class="h-20 max-w-[365px]">
-              <img  class="w-full h-full" src="data:image/jpeg;base64,{{DNS1D::getBarcodeJPG($request['barcode_data'], 'C128')}}" alt="barcode"   />
+              {{-- <img  class="w-full h-full" src="data:image/jpeg;base64,{{DNS1D::getBarcodeJPG($request['barcode_data'], 'C128')}}" alt="barcode"   /> --}}
+              {!! DNS1D::getBarcodeHTML($request['barcode_data'], 'C128', 3, 60) !!}
             </div>
             <p class="text-black font-bold text-lg">
               <span> SUM OF CANNABINOIDS: </span>
