@@ -7,46 +7,40 @@
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="w-full">
-    <div class="w-[76.2mm] h-[25.4mm] flex items-end overflow-hidden gap-1 bg-white py-0.5 pr-0.5">
+<body class="w-full overflow-hidden">
+    <div class="w-[76.2mm] h-[25.4mm] flex items-end overflow-hidden gap-1 bg-white mx-auto py-0.5 pr-0.5">
         <!-- Left section with logo and strain type -->
         <div class="flex flex-col items-start gap-0.5">
             <div class="w-[15mm] h-[15mm] bg-gray-500 -rotate-90">
                 <img
-                    src="{{ asset('storage/' . $logo->logo) }}"
+                    src=""
                     class="w-full h-full object-fill"
                     alt=""
                 />
             </div>
             <div class="w-full flex flex-col items-end">
-                <div class="w-full h-2 @if ($request['strain_type'] == 'sativa')
-                    bg-red-500
-                    @elseif($request['strain_type'] == 'hybrid')
-                    bg-orange-400
-                    @else
-                    bg-blue-400
-                    @endif">
+                <div class="w-full  bg-red-500 h-2f">
                 </div>
                 <span class="text-xs text-black font-bold uppercase mr-0.5 mt-0.5">
-                    {{ $request['strain_type'] }}
+                  12
                 </span>
             </div>
         </div>
 
         <!-- Middle section with product name -->
         <div class="text-black font-bold text-xs overflow-hidden" style="writing-mode: sideways-lr">
-            <p class="whitespace-nowrap">{{ $request['name_one'] }}</p>
-            <p class="whitespace-nowrap">{{ $request['name_two'] }}</p>
+            <p class="whitespace-nowrap">122</p>
+            <p class="whitespace-nowrap">12</p>
         </div>
 
         <!-- Right section with cannabinoid info and details -->
         <div class="flex h-full items-end gap-1">
             <div class="text-black font-bold text-xs border border-black" style="writing-mode: sideways-lr">
                 <div class="pt-1 pb-0.5">
-                    <span class="px-1 font-black whitespace-nowrap text-[6.9px]">SUM OF CANNABINOIDS:</span>
+                    <span class="px-1 font-black whitespace-nowrap text-[8px]">SUM OF CANNABINOIDS:</span>
                 </div>
                 <p class="text-sm font-bold pb-0.5">
-                    {{ $request['sum_of_cannabinoids'] }}
+                  12
                 </p>
             </div>
 
@@ -56,37 +50,37 @@
                 </div>
                 <p class="text-black font-bold text-[8px] leading-tight">
                     <span>SUM OF CANNABINOIDS:</span>
-                    {{ $request['sum_of_cannabinoids'] }}
+                   12
                 </p>
                 <div class="grid grid-cols-2 gap-1">
                     <p class="text-black font-bold text-[8px] leading-tight">
                         <span>TOTAL THC:</span>
-                        {{ $request['total_thc'] }}
+                       12
                     </p>
                     <p class="text-black font-bold text-[8px] leading-tight">
                         <span>TOTAL CBD:</span>
-                        {{ $request['total_cbd'] }}
+                       12
                     </p>
                 </div>
                 <p class="text-black font-bold text-[8px] leading-tight">
                     <span>DISTRO:</span>
-                    {{ $request['distro_name'] }}
+                   12
                 </p>
                 <p class="text-black font-bold text-[8px] leading-tight">
                     <span>LICENSE#</span>
-                    {{$request['license']}}
+                   12
                 </p>
                 <p class="text-black font-bold text-[8px] leading-tight">
                     <span>BATCH:</span>
-                    {{ $request['batch'] }}
+                   12
                 </p>
                 <p class="text-black font-bold text-[8px] leading-tight">
-                    <span>{{ $request['name_one'] . ' ' .  $request['name_two']  }} - PKG'D:</span>
-                    {{ $request['pkg_date'] }}
+                    <span>sfsd - PKG'D:</span>
+                    dsfdsf
                 </p>
                 <p class="text-black font-bold text-[8px] leading-tight">
                     <span>UID:</span>
-                    {{ $request['uid'] }}
+                   sfdsfdsf
                 </p>
             </div>
         </div>

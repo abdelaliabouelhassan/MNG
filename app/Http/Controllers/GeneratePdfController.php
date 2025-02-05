@@ -42,7 +42,7 @@ class GeneratePdfController extends Controller
             })
             ->landscape()
             ->margins(0, 0, 0, 0)
-            ->paperSize(84.3, 200, 'mm')
+            ->paperSize(25.4, 76.2, 'mm')
             ->name('invoice-2023-04-10.pdf')
             ->download();
     }
@@ -63,7 +63,7 @@ class GeneratePdfController extends Controller
             })
             ->landscape()
             ->margins(0, 0, 0, 0)
-            ->paperSize(76.9, 200, 'mm')
+            ->paperSize(25.4, 76.2, 'mm')
             ->name('invoice-2023-04-10.pdf')
             ->download();
     }
