@@ -30,7 +30,7 @@
     </div>
 
     <div
-     class="absolute right-6 top-1 border min-h-1 border-black min-w-14 text-xs px-px text-black"
+     class="absolute right-6 top-7 border min-h-1 border-black min-w-14 text-xs px-px text-black"
     >
     {{ $request['sum_of_cannabinoids'] }}
     </div>
