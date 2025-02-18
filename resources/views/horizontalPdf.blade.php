@@ -77,13 +77,20 @@
       </div>
     </div>
 
-    <div class="flex justify-between gap-1 w-full items-center pt-px ">
+    <div class="flex justify-between gap-x-1 mb-1 pr-5  w-full items-center pt-px ">
       <div>
         <p class="text-black font-bold text-[6px] leading-tight whitespace-nowrap">
            {{ $request['distro_name'] }}
         </p>
         <p class="text-black font-bold text-[6px] leading-tight">{{$request['license']}}</p>
       </div>
+
+      <div class="h-[5.4mm] max-w-[25mm]">
+        <!-- Barcode -->
+        @if ($request['barcode_data'])
+           <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($request['barcode_data'], 'UPCA')}}" class=" w-full h-full" alt="Barcode">
+        @endif
+     </div>
 
       
     </div>

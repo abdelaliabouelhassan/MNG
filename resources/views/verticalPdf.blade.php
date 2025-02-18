@@ -52,7 +52,11 @@
 
             <div class="flex flex-col items-start">
                 <div class="h-[8mm] max-w-[25mm]">
-                    <!-- Barcode placeholder -->
+                    <!-- Barcode -->
+                    @if ($request['barcode_data'])
+                      <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($request['barcode_data'], 'UPCA')}}" class=" w-full h-full" alt="Barcode">
+                    @endif
+                   
                 </div>
                 <p class="text-black font-bold text-[8px] leading-tight">
                     <span>SUM OF CANNABINOIDS:</span>

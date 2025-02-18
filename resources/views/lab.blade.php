@@ -7,83 +7,92 @@
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="w-full overflow-hidden">
-    <div class="w-[76.2mm] h-[25.4mm] flex items-end overflow-hidden gap-1 bg-white mx-auto py-0.5 pr-0.5">
-        <!-- Left section with logo and strain type -->
-        <div class="flex flex-col items-start gap-0.5">
-            <div class="w-[15mm] h-[15mm] bg-gray-500 -rotate-90">
-                <img
-                    src=""
-                    class="w-full h-full object-fill"
-                    alt=""
-                />
-            </div>
-            <div class="w-full flex flex-col items-end">
-                <div class="w-full  bg-red-500 h-2f">
-                </div>
-                <span class="text-xs text-black font-bold uppercase mr-0.5 mt-0.5">
-                  12
-                </span>
-            </div>
-        </div>
-
-        <!-- Middle section with product name -->
-        <div class="text-black font-bold text-xs overflow-hidden" style="writing-mode: sideways-lr">
-            <p class="whitespace-nowrap">122</p>
-            <p class="whitespace-nowrap">12</p>
-        </div>
-
-        <!-- Right section with cannabinoid info and details -->
-        <div class="flex h-full items-end gap-1">
-            <div class="text-black font-bold text-xs border border-black" style="writing-mode: sideways-lr">
-                <div class="pt-1 pb-0.5">
-                    <span class="px-1 font-black whitespace-nowrap text-[8px]">SUM OF CANNABINOIDS:</span>
-                </div>
-                <p class="text-sm font-bold pb-0.5">
-                  12
-                </p>
-            </div>
-
-            <div class="flex flex-col items-start">
-                <div class="h-[8mm] max-w-[25mm]">
-                    <!-- Barcode placeholder -->
-                </div>
-                <p class="text-black font-bold text-[8px] leading-tight">
-                    <span>SUM OF CANNABINOIDS:</span>
-                   12
-                </p>
-                <div class="grid grid-cols-2 gap-1">
-                    <p class="text-black font-bold text-[8px] leading-tight">
-                        <span>TOTAL THC:</span>
-                       12
-                    </p>
-                    <p class="text-black font-bold text-[8px] leading-tight">
-                        <span>TOTAL CBD:</span>
-                       12
-                    </p>
-                </div>
-                <p class="text-black font-bold text-[8px] leading-tight">
-                    <span>DISTRO:</span>
-                   12
-                </p>
-                <p class="text-black font-bold text-[8px] leading-tight">
-                    <span>LICENSE#</span>
-                   12
-                </p>
-                <p class="text-black font-bold text-[8px] leading-tight">
-                    <span>BATCH:</span>
-                   12
-                </p>
-                <p class="text-black font-bold text-[8px] leading-tight">
-                    <span>sfsd - PKG'D:</span>
-                    dsfdsf
-                </p>
-                <p class="text-black font-bold text-[8px] leading-tight">
-                    <span>UID:</span>
-                   sfdsfdsf
-                </p>
-            </div>
-        </div>
+<body class="w-full h-10 overflow-hidden">
+  <div class="bg-red-500 mx-auto px-1 relative overflow-hidden  w-[76.2mm] h-[25.9mm]">
+    <div
+      class="w-4 absolute right-0 top-0 h-full  flex items-center justify-center
+      
+        bg-red-500
+      
+       
+      "
+     
+    >
+      <span
+        class="text-xs text-black font-bold uppercase"
+        style="writing-mode: vertical-lr"
+      >
+       dfdsfsdf
+      </span>
     </div>
+
+    <div
+     class="absolute right-6 top-7 border min-h-1 border-black min-w-14 text-xs px-px text-black"
+    >
+   12
+    </div>
+
+    <div class="flex w-full items-start gap-4">
+      <div class="w-[20mm] h-[20mm] overflow-hidden">
+        <img
+          src="{{ asset('storage/') }}"
+          class="w-full h-full object-fill"
+          alt=""
+        />
+      </div>
+      <div class="flex flex-col items-start">
+        <div class="h-4 overflow-hidden w-full">
+          <h2 class="text-black font-bold text-[10px] mt-0.5">
+           test lab
+          </h2>
+        </div>
+    
+        <p class="text-black font-bold text-[6px] leading-tight">
+          <span> SUM OF CANNABINOIDS: </span>
+          12
+        </p>
+        <p class="text-black font-bold text-[6px] leading-tight">
+          <span> TOTAL THC: </span>
+          12
+        </p>
+        <p class="text-black font-bold text-[6px] leading-tight">
+          <span>TOTAL CBD: </span>
+            12
+        </p>
+        <p class="text-black font-bold text-[6px] leading-tight">
+          <span> PKG DATE: </span>
+          12
+        </p>
+        <p class="text-black font-bold text-[6px] leading-tight">
+          <span> BATCH: </span>
+          12
+        </p>
+        <p class="text-black font-bold text-[6px] leading-tight">
+          <span> UID: </span>
+          12
+        </p>
+      </div>
+    </div>
+
+    <div class="flex justify-between pr-5   gap-1 w-full items-center pt-px ">
+      <div>
+        <p class="text-black font-bold text-[6px] leading-tight whitespace-nowrap">
+          dsfsdfdsfsdf dsfdsfsd fsdf
+        </p>
+        <p class="text-black font-bold text-[6px] leading-tight">sfdsfds fsdfds fsdf</p>
+      </div>
+
+
+      <div class="h-[5.5mm] max-w-[25mm]">
+        <!-- Barcode placeholder -->
+      
+          <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG('1', 'UPCA')}}" class=" w-full h-full" alt="Barcode">
+       
+       
+    </div>
+
+      
+    </div>
+  </div>
 </body>
 </html>

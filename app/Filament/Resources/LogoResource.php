@@ -10,6 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -39,6 +40,12 @@ class LogoResource extends Resource
                             ->helperText('This name must be unique')
                             ->columnSpanFull(),
 
+                        Forms\Components\TextInput::make('barcode')
+                            ->maxLength(255)
+                            ->placeholder('Enter Bar Code')
+                            ->helperText('Leave it empty if a barcode is not needed.')
+                            ->columnSpanFull(),
+
                         Forms\Components\FileUpload::make('logo')
                             ->required()
                             ->image()
@@ -65,6 +72,8 @@ class LogoResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
+                ViewColumn::make('barcode')
+                    ->view('tables.columns.barcode'),
                 Tables\Columns\ImageColumn::make('logo')
                     ->disk('public')
                     ->square()

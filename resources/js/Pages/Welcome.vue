@@ -1,9 +1,9 @@
 <script setup>
 import { Head, Link } from "@inertiajs/vue3";
 import axios from "axios";
-import { ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     required: true,
@@ -12,6 +12,12 @@ defineProps({
     type: Array,
     required: true,
   },
+});
+
+onMounted(() => {
+  if (props.logos && props.logos.length > 0) {
+    data.value.logo = props.logos[0].id;
+  }
 });
 
 const loading = ref(false);
@@ -31,7 +37,7 @@ const data = ref({
   license: "C11-0001463-LIC",
   distro_name: "DYER MANAGEMENT CENTER",
   strain_type: "indica",
-  barcode_data: "0000000000",
+  barcode_data: "",
   title_font_size: "18",
 });
 
@@ -100,6 +106,17 @@ const getName = () => {
     return "LABEL";
   }
 };
+
+const selectedLogo = computed(() => {
+  return props.logos.find((item) => item.id === data.value.logo);
+});
+
+// Watch for changes in selectedLogo and update barcode_data
+watch(selectedLogo, (newValue) => {
+  if (newValue) {
+    data.value.barcode_data = newValue.barcode;
+  }
+});
 
 const getData = async () => {
   if (loading.value) return;
@@ -367,7 +384,7 @@ const CopyInfo = () => {
                 id="barcode-data"
                 class="bg-gray-700 border-gray-600 text-white px-4 py-2 rounded w-full"
                 v-model="data.barcode_data"
-                value="0000000000"
+                placeholder="123456789012"
               />
             </div>
             <div class="mb-4 hidden">
