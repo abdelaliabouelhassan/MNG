@@ -44,7 +44,17 @@ class LogoResource extends Resource
                             ->maxLength(255)
                             ->placeholder('Enter Bar Code')
                             ->helperText('Leave it empty if a barcode is not needed.')
-                            ->columnSpanFull(),
+                            ->columnSpanFull()
+                            ->numeric()
+                            ->length(12)
+                            ->rules([
+                                'nullable',
+                                'regex:/^[0-9]{12}$/',
+                            ])
+                            ->validationMessages([
+                                'regex' => 'The barcode must be exactly 12 digits.',
+                                'length' => 'The barcode must be exactly 12 digits.',
+                            ]),
 
                         Forms\Components\FileUpload::make('logo')
                             ->required()
