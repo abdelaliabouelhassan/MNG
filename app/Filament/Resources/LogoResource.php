@@ -14,6 +14,7 @@ use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Rules\UpcA;
 
 class LogoResource extends Resource
 {
@@ -40,6 +41,8 @@ class LogoResource extends Resource
                             ->helperText('This name must be unique')
                             ->columnSpanFull(),
 
+
+
                         Forms\Components\TextInput::make('barcode')
                             ->maxLength(255)
                             ->placeholder('Enter Bar Code')
@@ -50,11 +53,13 @@ class LogoResource extends Resource
                             ->rules([
                                 'nullable',
                                 'regex:/^[0-9]{12}$/',
+                                new UpcA(),
                             ])
                             ->validationMessages([
                                 'regex' => 'The barcode must be exactly 12 digits.',
                                 'length' => 'The barcode must be exactly 12 digits.',
                             ]),
+
 
                         Forms\Components\FileUpload::make('logo')
                             ->required()
