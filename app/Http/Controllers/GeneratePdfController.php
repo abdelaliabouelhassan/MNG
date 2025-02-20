@@ -9,6 +9,7 @@ use Spatie\LaravelPdf\Facades\Pdf;
 use Inertia\Inertia;
 use RoachPHP\Roach;
 use RoachPHP\Spider\Configuration\Overrides;
+use App\Rules\UpcA;
 
 class GeneratePdfController extends Controller
 {
@@ -26,7 +27,9 @@ class GeneratePdfController extends Controller
 
     public function generateHorizontalPdf(Request $request)
     {
-
+        $request->validate([
+            'barcode_data' => ['nullable', new UpcA()]
+        ]);
         if ($request->logo) {
             $logo = Logo::findOrFail($request->logo);
         } else {
@@ -48,6 +51,9 @@ class GeneratePdfController extends Controller
     }
     public function generateVerticalPdf(Request $request)
     {
+        $request->validate([
+            'barcode_data' => ['nullable', new UpcA()]
+        ]);
         if ($request->logo) {
             $logo = Logo::findOrFail($request->logo);
         } else {

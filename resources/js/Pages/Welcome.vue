@@ -44,10 +44,11 @@ const data = ref({
 const url = ref(null);
 const generatedData = ref({});
 const showDetails = ref(false);
-
+const errors = ref(false);
 const generateHorizontalPdf = async () => {
   if (loading.value) return;
   loading.value = true;
+  errors.value = false;
   axios
     .post("/generate-horizontal-pdf", data.value, {
       responseType: "blob", // Important for downloading files
@@ -64,6 +65,9 @@ const generateHorizontalPdf = async () => {
     .catch((err) => {
       console.error("Error downloading the PDF", err);
       alert("Error downloading the PDF");
+      if (err.response.status === 422) {
+        errors.value = true;
+      }
     })
     .finally(() => {
       loading.value = false;
@@ -73,6 +77,7 @@ const generateHorizontalPdf = async () => {
 const generateVerticalPdf = async () => {
   if (loading.value) return;
   loading.value = true;
+  errors.value = false;
   axios
     .post("/generate-vertical-pdf", data.value, {
       responseType: "blob", // Important for downloading files
@@ -89,6 +94,9 @@ const generateVerticalPdf = async () => {
     .catch((err) => {
       console.error("Error downloading the PDF", err);
       alert("Error downloading the PDF");
+      if (err.response.status === 422) {
+        errors.value = true;
+      }
     })
     .finally(() => {
       loading.value = false;
@@ -206,6 +214,7 @@ const CopyInfo = () => {
   <Head :title="title" />
   <div class="text-white p-6">
     <div class="max-w-5xl mx-auto">
+      {{ errors }}
       <h1 class="text-2xl font-bold mb-4">MNG LABEL MAKER v3</h1>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
@@ -378,6 +387,9 @@ const CopyInfo = () => {
           </div>
           <div class="grid grid-cols-1 gap-4">
             <div class="mb-4">
+              <span v-if="errors" class="text-red-400"
+                >barcode is not a valid UPC-A barcode.</span
+              >
               <label for="barcode-data" class="block mb-1">Barcode Data</label>
               <input
                 type="text"
